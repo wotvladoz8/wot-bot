@@ -367,8 +367,10 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 def main():
     try:
+        # Создаем Application вместо Updater
         application = Application.builder().token(BOT_TOKEN).build()
         
+        # Добавляем обработчики
         application.add_handler(CommandHandler("start", start))
         application.add_handler(CommandHandler("help", handle_help))
         
@@ -393,12 +395,15 @@ def main():
         
         for nation in nation_handlers:
             application.add_handler(MessageHandler(filters.Regex(f"^{nation}$"), handle_nation_selection))
-        application.add_handler(MessageHandler(filters.Regex("^⚙️ Сборная$"), handle_nation_selection)) 
+        application.add_handler(MessageHandler(filters.Regex("^⚙️ Сборная$"), handle_nation_selection))
                    
         application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_text))
         
         logger.info("✅ Бот запускается...")
+        
+        # Запускаем бота
         application.run_polling()
+        
     except Exception as e:
         logger.error(f"Failed to start bot: {e}")
 
