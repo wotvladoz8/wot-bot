@@ -2,7 +2,7 @@ import logging
 from telegram import Update, ReplyKeyboardMarkup
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 
-BOT_TOKEN = "8238117273:AAG0URTEil-1bGyBmKOucgEB1w7hXSKSG9A"
+scalingo env-set BOT_TOKEN = "8238117273:AAG0URTEil-1bGyBmKOucgEB1w7hXSKSG9A"
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -751,4 +751,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
